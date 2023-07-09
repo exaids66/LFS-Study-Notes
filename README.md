@@ -112,19 +112,19 @@ VFS**向下**，**封装**各个文件系统的接口函数以及一些文件系
 
 ### 文件系统的读流程
 
-<img src="C:\Users\jxsyx\AppData\Roaming\Typora\typora-user-images\image-20230708211814079.png" alt="image-20230708211814079" style="zoom: 80%;" />
+<img src="https://raw.githubusercontent.com/exaids66/imgs/main/images/image-20230708211814079.png" alt="image-20230708211814079" style="zoom: 80%;" />
 
 <img src="https://raw.githubusercontent.com/exaids66/imgs/main/images/image-20230708211853804.png" alt="image-20230708211853804" style="zoom:67%;" />
 
 #### vfs_read
 
-<img src="C:\Users\jxsyx\AppData\Roaming\Typora\typora-user-images\image-20230708212000547.png" alt="image-20230708212000547" style="zoom:80%;" />
+<img src="https://raw.githubusercontent.com/exaids66/imgs/main/images/image-20230708212000547.png" alt="image-20230708212000547" style="zoom:80%;" />
 
 注册的 file_operations 有 read 方法，调用 read 方法，一般的设备文件会注册此类接口若 file_operations 有 read_iter 方法，调用 new_sync_read()。一般普通文件注册此类方法。
 
 #### new_sync_read
 
-<img src="C:\Users\jxsyx\AppData\Roaming\Typora\typora-user-images\image-20230708212438517.png" alt="image-20230708212438517" style="zoom:80%;" />
+<img src="https://raw.githubusercontent.com/exaids66/imgs/main/images/image-20230708212438517.png" alt="image-20230708212438517" style="zoom:80%;" />
 
 这个函数用到了两个结构体iovec和kiocb，分别用来记录文件侧和内存侧的文件读取进度。
 
@@ -132,7 +132,7 @@ VFS**向下**，**封装**各个文件系统的接口函数以及一些文件系
 
 ****
 
-<img src="C:\Users\jxsyx\AppData\Roaming\Typora\typora-user-images\image-20230708212906088.png" alt="image-20230708212906088" style="zoom:80%;" />
+<img src="https://raw.githubusercontent.com/exaids66/imgs/main/images/image-20230708212906088.png" alt="image-20230708212906088" style="zoom:80%;" />
 
 #### generic_file_read_iter
 
